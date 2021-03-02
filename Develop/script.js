@@ -9,11 +9,17 @@ var passOptions;
 //Password generator function
 
 function generatePassword(passLength, lowerBool, upperBool, specialBool) {
-  var generatedPassword; //Assign function result
+  var generatedPassword = ""; //Assign function result
+  var generatedLetter;
   if (passLength < 8 || passLength > 128) { //limit password length options
     return "Please choose a password length between 8 and 128 characters."
   };
-
+  for (var i = 0; i < passLength; i++) {
+    if (lowerBool === true && upperBool === false && specialBool === false) {
+      generatedLetter = lowercaseLetters[(Math.floor(Math.random() * 26))];
+      generatedPassword = generatedPassword.concat(generatedLetter);
+    }
+  };
   return generatedPassword;
 };
 
