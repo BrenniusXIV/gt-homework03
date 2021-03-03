@@ -15,22 +15,23 @@ function generatePassword(passLength, lowerBool, upperBool, numbersBool, special
   if (passLength < 8 || passLength > 128) { //limit password length options
     return "Please choose a password length between 8 and 128 characters."
   };
+
+  var selectedChars = [];
+  if (lowerBool === true) {
+    selectedChars = selectedChars.concat(lowercaseLetters);
+  }
+  if (upperBool === true) {
+    selectedChars = selectedChars.concat(uppercaseLetters);
+  }
+  if (numbersBool === true) {
+    selectedChars = selectedChars.concat(numbers);
+  }
+  if (specialBool === true) {
+    selectedChars = selectedChars.concat(specialChars)
+  };
   for (var i = 0; i < passLength; i++) {
-    if (lowerBool === true && upperBool === false && numbersBool === false && specialBool === false) {
-      generatedLetter = lowercaseLetters[(Math.floor(Math.random() * lowercaseLetters.length))];
-      generatedPassword = generatedPassword.concat(generatedLetter);
-    }
-    else if (lowerBool === true && upperBool === true && numbersBool === false && specialBool === false) {
-      var selectedArray = lowercaseLetters.concat(uppercaseLetters);
-      generatedLetter = selectedArray[(Math.floor(Math.random() * selectedArray.length))];
-      generatedPassword = generatedPassword.concat(generatedLetter)
-    }
-    else if (lowerBool === true && upperBool === true && numbersBool === true && specialBool === false) {
-      var selectedArray = lowercaseLetters.concat(uppercaseLetters).concat(numbers);
-      generatedLetter = selectedArray[(Math.floor(Math.random() * selectedArray.length))];
-      generatedPassword = generatedPassword.concat(generatedLetter);
-    }
-    ;
+    generatedLetter = selectedChars[(Math.floor(Math.random() * selectedChars.length))];
+    generatedPassword = generatedPassword.concat(generatedLetter);
   };
   return generatedPassword;
 };
