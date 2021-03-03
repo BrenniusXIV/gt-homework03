@@ -20,6 +20,17 @@ function generatePassword(passLength, lowerBool, upperBool, numbersBool, special
       generatedLetter = lowercaseLetters[(Math.floor(Math.random() * lowercaseLetters.length))];
       generatedPassword = generatedPassword.concat(generatedLetter);
     }
+    else if (lowerBool === true && upperBool === true && numbersBool === false && specialBool === false) {
+      var selectedArray = lowercaseLetters.concat(uppercaseLetters);
+      generatedLetter = selectedArray[(Math.floor(Math.random() * selectedArray.length))];
+      generatedPassword = generatedPassword.concat(generatedLetter)
+    }
+    else if (lowerBool === true && upperBool === true && numbersBool === true && specialBool === false) {
+      var selectedArray = lowercaseLetters.concat(uppercaseLetters).concat(numbers);
+      generatedLetter = selectedArray[(Math.floor(Math.random() * selectedArray.length))];
+      generatedPassword = generatedPassword.concat(generatedLetter);
+    }
+    ;
   };
   return generatedPassword;
 };
