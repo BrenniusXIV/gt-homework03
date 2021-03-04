@@ -45,7 +45,7 @@ function generatePassword() {
   };
   
   for (var i = 0; i < passLength; i++) {
-    generatedLetter = selectedChars[(Math.round(Math.random() * selectedChars.length))];
+    generatedLetter = selectedChars[(Math.floor(Math.random() * selectedChars.length))];
     generatedPassword = generatedPassword.concat(generatedLetter);
   };
   return generatedPassword;
