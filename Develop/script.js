@@ -1,33 +1,33 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
-var lowercaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var uppercaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var specialChars = [" ", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
+const generateBtn = document.querySelector("#generate");
+const lowercaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+const uppercaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const specialChars = [" ", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
 
 //DOM number input; use .value method to check input
-var numInput = document.getElementById("num-inp");
+const numInput = document.getElementById("num-inp");
 
 //DOM checkboxes. Use .checked method to determine true/false for conditional logic
-var checkboxLower = document.getElementById("checkbox-lower");
-var checkboxUpper = document.getElementById("checkbox-upper");
-var checkboxNum = document.getElementById("checkbox-num");
-var checkboxSpec = document.getElementById("checkbox-spec");
+const checkboxLower = document.getElementById("checkbox-lower");
+const checkboxUpper = document.getElementById("checkbox-upper");
+const checkboxNum = document.getElementById("checkbox-num");
+const checkboxSpec = document.getElementById("checkbox-spec");
 
 //Password generator function
 function generatePassword() {
-  var generatedPassword = ""; //Assign function result
-  var generatedLetter;
-  var passLength = numInput.value;
-  var lowerBool = checkboxLower.checked;
-  var upperBool = checkboxUpper.checked;
-  var numbersBool = checkboxNum.checked;
-  var specialBool = checkboxSpec.checked;
+  let generatedPassword = ""; //Assign function result
+  let generatedLetter;
+  const passLength = numInput.value;
+  const lowerBool = checkboxLower.checked;
+  const upperBool = checkboxUpper.checked;
+  const numbersBool = checkboxNum.checked;
+  const specialBool = checkboxSpec.checked;
   if (passLength < 8 || passLength > 128) { //limit password length options
     return "Please choose a password length between 8 and 128 characters."
   };
 
-  var selectedChars = [];
+  let selectedChars = [];
   if (lowerBool !== true && upperBool !== true && numbersBool !== true && specialBool !== true) {
     return "Please choose at least one password criterion to generate."
   };
@@ -44,7 +44,7 @@ function generatePassword() {
     selectedChars = selectedChars.concat(specialChars)
   };
   
-  for (var i = 0; i < passLength; i++) {
+  for (let i = 0; i < passLength; i++) {
     generatedLetter = selectedChars[(Math.floor(Math.random() * selectedChars.length))];
     generatedPassword = generatedPassword.concat(generatedLetter);
   };
@@ -53,8 +53,8 @@ function generatePassword() {
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  const password = generatePassword();
+  const passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
