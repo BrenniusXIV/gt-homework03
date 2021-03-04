@@ -9,23 +9,20 @@ var specialChars = [" ", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+",
 var numInput = document.getElementById("num-inp");
 
 //DOM checkboxes. Use .checked method to determine true/false for conditional logic
-var ckbxLower = document.getElementById("ckbx-lower");
-var ckbxUpper = document.getElementById("ckbx-upper");
-var ckbxNum = document.getElementById("ckbx-num");
-var ckbxSpec = document.getElementById("ckbx-spec");
-
-
-
+var checkboxLower = document.getElementById("checkbox-lower");
+var checkboxUpper = document.getElementById("checkbox-upper");
+var checkboxNum = document.getElementById("checkbox-num");
+var checkboxSpec = document.getElementById("checkbox-spec");
 
 //Password generator function
 function generatePassword() {
   var generatedPassword = ""; //Assign function result
   var generatedLetter;
   var passLength = numInput.value;
-  var lowerBool = ckbxLower.checked;
-  var upperBool = ckbxUpper.checked;
-  var numbersBool = ckbxNum.checked;
-  var specialBool = ckbxSpec.checked;
+  var lowerBool = checkboxLower.checked;
+  var upperBool = checkboxUpper.checked;
+  var numbersBool = checkboxNum.checked;
+  var specialBool = checkboxSpec.checked;
   if (passLength < 8 || passLength > 128) { //limit password length options
     return "Please choose a password length between 8 and 128 characters."
   };
@@ -48,7 +45,7 @@ function generatePassword() {
   };
   
   for (var i = 0; i < passLength; i++) {
-    generatedLetter = selectedChars[(Math.floor(Math.random() * selectedChars.length))];
+    generatedLetter = selectedChars[(Math.round(Math.random() * selectedChars.length))];
     generatedPassword = generatedPassword.concat(generatedLetter);
   };
   return generatedPassword;
