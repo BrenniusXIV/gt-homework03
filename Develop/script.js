@@ -18,9 +18,14 @@ var ckbxSpec = document.getElementById("ckbx-spec");
 
 
 //Password generator function
-function generatePassword(passLength, lowerBool, upperBool, numbersBool, specialBool) {
+function generatePassword() {
   var generatedPassword = ""; //Assign function result
   var generatedLetter;
+  var passLength = numInput.value;
+  var lowerBool = ckbxLower.checked;
+  var upperBool = ckbxUpper.checked;
+  var numbersBool = ckbxNum.checked;
+  var specialBool = ckbxSpec.checked;
   if (passLength < 8 || passLength > 128) { //limit password length options
     return "Please choose a password length between 8 and 128 characters."
   };
