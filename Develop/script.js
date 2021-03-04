@@ -31,6 +31,9 @@ function generatePassword() {
   };
 
   var selectedChars = [];
+  if (lowerBool !== true && upperBool !== true && numbersBool !== true && specialBool !== true) {
+    return "Please choose at least one password criterion to generate."
+  };
   if (lowerBool === true) {
     selectedChars = selectedChars.concat(lowercaseLetters);
   }
