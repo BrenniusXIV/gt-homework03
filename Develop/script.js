@@ -29,6 +29,7 @@ function generatePassword(passLength, lowerBool, upperBool, numbersBool, special
   if (specialBool === true) {
     selectedChars = selectedChars.concat(specialChars)
   };
+  
   for (var i = 0; i < passLength; i++) {
     generatedLetter = selectedChars[(Math.floor(Math.random() * selectedChars.length))];
     generatedPassword = generatedPassword.concat(generatedLetter);
